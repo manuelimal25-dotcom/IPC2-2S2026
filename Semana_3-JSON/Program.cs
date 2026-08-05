@@ -41,7 +41,7 @@ static void MostrarMenu()
 // Llama a la función que lee el archivo JSON de entrada
 static void LeerArchivoJson()
 {
-    string path = @"./Entrada.json";
+    string path = @"./Entrada.JSON";
     LeerJSON.LeerArchivoJSON(path);
 }
 
