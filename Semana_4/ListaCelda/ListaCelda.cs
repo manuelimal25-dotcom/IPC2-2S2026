@@ -75,7 +75,6 @@ namespace Proyecto1.ListaCelda
             }
 
             tamanio--;
-            Console.WriteLine($"Celda [{fila},{columna}] eliminada de la lista.");
         }
 
         // Busca una celda por fila y columna, y devuelve el nodo que la contiene

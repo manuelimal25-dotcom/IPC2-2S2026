@@ -2,7 +2,7 @@
 <configuracion>
     <listaCiudades>
         <ciudad>
-            <nombre filas="10" columnas="10">CiudadDemo</nombre>
+            <nombre filas="10" columnas="10">Guatemala</nombre>
             <fila numero="1">"**********"</fila>
             <fila numero="2">"*E       *"</fila>
             <fila numero="3">"* ***** **"</fila>
@@ -17,6 +17,15 @@
             <unidadMilitar fila="4" columna="4">20</unidadMilitar>
             <unidadMilitar fila="6" columna="4">25</unidadMilitar>
             <unidadMilitar fila="8" columna="8">10</unidadMilitar>
+        </ciudad>
+        <ciudad>
+            <nombre filas="5" columnas="5">Mixco</nombre>
+            <fila numero="1">"*****"</fila>
+            <fila numero="2">"*E  *"</fila>
+            <fila numero="3">"* R *"</fila>
+            <fila numero="4">"*  C*"</fila>
+            <fila numero="5">"*****"</fila>
+            <unidadMilitar fila="3" columna="2">12</unidadMilitar>
         </ciudad>
     </listaCiudades>
     <robots>

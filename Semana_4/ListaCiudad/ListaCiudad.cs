@@ -1,3 +1,4 @@
+using Proyecto1.Clases;
 namespace Proyecto1.ListaCiudad
 {
     public class ListaCiudad
