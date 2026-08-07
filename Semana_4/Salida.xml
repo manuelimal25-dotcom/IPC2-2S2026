@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuracion>
+  <listaCiudades>
+    <ciudad>
+      <nombre filas="10" columnas="10">CiudadDemo</nombre>
+    </ciudad>
+  </listaCiudades>
+  <robots>
+    <robot>
+      <nombre tipo="ChapinRescue">robot01</nombre>
+    </robot>
+    <robot>
+      <nombre tipo="ChapinFighter">robot02</nombre>
+    </robot>
+  </robots>
+</configuracion>
