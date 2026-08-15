@@ -1,0 +1,9 @@
+digraph ArbolBinarioBusqueda {
+    node [shape=circle, style=filled, fillcolor=lightblue, fontname="Arial"];
+    70 -> 31 [label="I"];
+    31 -> 14 [label="I"];
+    14 -> 23 [label="D"];
+    70 -> 93 [label="D"];
+    93 -> 73 [label="I"];
+    93 -> 94 [label="D"];
+}
