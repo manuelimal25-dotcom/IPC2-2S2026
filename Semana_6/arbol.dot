@@ -1,0 +1,22 @@
+digraph ArbolAVL {
+    node [shape=circle, style=filled, fillcolor=lightblue, fontname="Arial"];
+    60 [label="60\nFE=0"];
+    60 -> 2 [label="I"];
+    2 [label="2\nFE=-1"];
+    2 -> 1 [label="I"];
+    1 [label="1\nFE=0"];
+    2 -> 52 [label="D"];
+    52 [label="52\nFE=1"];
+    52 -> 20 [label="I"];
+    20 [label="20\nFE=0"];
+    60 -> 96 [label="D"];
+    96 [label="96\nFE=0"];
+    96 -> 78 [label="I"];
+    78 [label="78\nFE=-1"];
+    78 -> 89 [label="D"];
+    89 [label="89\nFE=0"];
+    96 -> 652 [label="D"];
+    652 [label="652\nFE=1"];
+    652 -> 552 [label="I"];
+    552 [label="552\nFE=0"];
+}
