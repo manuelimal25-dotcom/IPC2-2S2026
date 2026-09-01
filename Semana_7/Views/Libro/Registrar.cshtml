@@ -1,0 +1,42 @@
+@{
+    // Define el titulo de la pestaña del navegador para esta vista
+    ViewData["Title"] = "Registrar libro";
+}
+
+<!-- Hoja de estilos propia de esta vista, aparte del layout general -->
+<link rel="stylesheet" href="~/css/libro.css" />
+
+<h1>Registrar un nuevo libro</h1>
+
+@if (ViewBag.Mensaje != null)
+{
+    // Solo se muestra este parrafo si el controlador envio un mensaje
+    <p class="mensaje-confirmacion">@ViewBag.Mensaje</p>
+}
+
+<!-- El method post hace que el envio llegue al metodo Registrar marcado con HttpPost -->
+<form class="form-libro" method="post" action="/Libro/Registrar">
+    <div>
+        <!-- El atributo for conecta la etiqueta con el campo por su id -->
+        <label for="isbn">ISBN</label>
+        <!-- El name debe coincidir con el parametro isbn del controlador -->
+        <input type="number" id="isbn" name="isbn" required />
+    </div>
+    <div>
+        <label for="titulo">Título</label>
+        <!-- El name debe coincidir con el parametro titulo del controlador -->
+        <input type="text" id="titulo" name="titulo" required />
+    </div>
+    <div>
+        <label for="autor">Autor</label>
+        <!-- El name debe coincidir con el parametro autor del controlador -->
+        <input type="text" id="autor" name="autor" required />
+    </div>
+    <div>
+        <label for="categoria">Categoría</label>
+        <!-- El name debe coincidir con el parametro categoria del controlador -->
+        <input type="text" id="categoria" name="categoria" required />
+    </div>
+    <!-- Este boton dispara el envio del formulario -->
+    <button type="submit">Registrar</button>
+</form>

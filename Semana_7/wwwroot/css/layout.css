@@ -1,0 +1,128 @@
+:root {
+    --paper: #F5EFE1;
+    --card: #FFFCF5;
+    --ink: #2B241C;
+    --muted: #7A6E58;
+    --border: #D8CBA8;
+    --spine: #7B2D26;
+    --spine-ink: #F5EFE1;
+    --navy: #2E4756;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    height: 100%;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Barra superior: solo titulo y regreso al inicio */
+.topbar {
+    height: 56px;
+    background: var(--spine);
+    color: var(--spine-ink);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    font-family: Georgia, "Iowan Old Style", serif;
+}
+
+.topbar-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.topbar-back {
+    color: var(--spine-ink);
+    text-decoration: none;
+    font-family: -apple-system, "Segoe UI", sans-serif;
+    font-size: 0.9rem;
+    padding: 6px 12px;
+    border: 1px solid rgba(245, 239, 225, 0.5);
+    border-radius: 4px;
+}
+
+.topbar-back:hover,
+.topbar-back:focus-visible {
+    background: rgba(245, 239, 225, 0.15);
+}
+
+/* Estructura de dos columnas debajo del navbar */
+.app-shell {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    min-height: calc(100vh - 56px);
+}
+
+.sidebar {
+    background: var(--card);
+    border-right: 1px solid var(--border);
+    padding: 24px 0;
+    overflow-y: auto;
+}
+
+.sidebar-group {
+    padding: 0 20px 20px;
+}
+
+.sidebar-group h2 {
+    font-family: Georgia, "Iowan Old Style", serif;
+    font-size: 0.95rem;
+    color: var(--navy);
+    margin: 0 0 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--border);
+}
+
+.sidebar-group ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar-group a {
+    display: block;
+    padding: 7px 8px;
+    border-radius: 4px;
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.sidebar-group a:hover,
+.sidebar-group a:focus-visible {
+    background: var(--paper);
+    color: var(--spine);
+}
+
+.sidebar-group a:focus-visible {
+    outline: 2px solid var(--navy);
+    outline-offset: 2px;
+}
+
+/* Area principal de contenido */
+.content {
+    padding: 32px 40px;
+}
+
+/* Responsivo: el sidebar pasa arriba del contenido */
+@media (max-width: 720px) {
+    .app-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .content {
+        padding: 24px 20px;
+    }
+}

@@ -1,0 +1,67 @@
+/* Contenedor del mensaje de confirmacion, usa el mismo tono que el resto del sitio */
+.mensaje-confirmacion {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--navy);
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    font-family: -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Tarjeta que envuelve todo el formulario */
+.form-libro {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px;
+    max-width: 480px;
+    font-family: -apple-system, "Segoe UI", sans-serif;
+}
+
+/* Cada campo (label + input) se apila en su propia fila */
+.form-libro div {
+    margin-bottom: 16px;
+}
+
+/* Las etiquetas quedan arriba del campo, en tono mas suave */
+.form-libro label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+/* Los campos de texto y numero comparten el mismo estilo */
+.form-libro input {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 0.95rem;
+}
+
+/* Resalta el campo activo, usando el mismo azul del navbar y los enlaces */
+.form-libro input:focus-visible {
+    outline: 2px solid var(--navy);
+    outline-offset: 1px;
+    border-color: var(--navy);
+}
+
+/* Boton principal, con el color del lomo para que combine con el navbar */
+.form-libro button {
+    background: var(--spine);
+    color: var(--spine-ink);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.form-libro button:hover,
+.form-libro button:focus-visible {
+    opacity: 0.9;
+}
