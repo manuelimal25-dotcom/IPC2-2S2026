@@ -1,0 +1,77 @@
+/* Tarjeta que envuelve el formulario de carga, mismo estilo que el resto del sitio */
+.form-xml {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 28px;
+    max-width: 480px;
+    font-family: -apple-system, "Segoe UI", sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.campo-archivo {
+    position: relative;
+}
+
+/* Oculta el input nativo, pero lo mantiene accesible para el teclado y lectores de pantalla */
+.campo-archivo input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    overflow: hidden;
+}
+
+/* El label reemplaza visualmente al input, actuando como boton de seleccion */
+.campo-archivo label {
+    display: block;
+    padding: 10px 14px;
+    border: 1px dashed var(--border);
+    border-radius: 4px;
+    background: var(--paper);
+    color: var(--muted);
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Se resalta el label cuando el input recibe foco por teclado */
+.campo-archivo input[type="file"]:focus-visible + label {
+    outline: 2px solid var(--navy);
+    outline-offset: 2px;
+}
+
+.form-xml button {
+    background: var(--spine);
+    color: var(--spine-ink);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.form-xml button:hover,
+.form-xml button:focus-visible {
+    opacity: 0.9;
+}
+
+/* Caja donde se muestra el texto devuelto por la lectura del XML */
+.resultado-lectura {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--navy);
+    border-radius: 4px;
+    padding: 16px 20px;
+    margin-top: 20px;
+    max-width: 600px;
+    font-family: -apple-system, "Segoe UI", sans-serif;
+}
+
+.resultado-lectura h2 {
+    margin-top: 0;
+    font-size: 1rem;
+    color: var(--navy);
+}

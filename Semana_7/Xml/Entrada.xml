@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config>
+    <listaCategorias>
+        <categoria>Literatura</categoria>
+        <categoria padre="Literatura">Novela</categoria>
+        <categoria padre="Literatura">Poesia</categoria>
+        <categoria padre="Novela">Ciencia Ficcion</categoria>
+        <categoria>Tecnologia</categoria>
+        <categoria padre="Tecnologia">Programacion</categoria>
+        <categoria padre="Tecnologia">Redes</categoria>
+    </listaCategorias>
+    <listaLibros>
+        <libro>
+            <ISBN>1001</ISBN>
+            <titulo>Cien Anios de Soledad</titulo>
+            <autor>Gabriel Garcia Marquez</autor>
+            <categoria>Novela</categoria>
+        </libro>
+        <libro>
+            <ISBN>1002</ISBN>
+            <titulo>Fundacion</titulo>
+            <autor>Isaac Asimov</autor>
+            <categoria>Ciencia Ficcion</categoria>
+        </libro>
+        <libro>
+            <ISBN>1003</ISBN>
+            <titulo>Veinte Poemas de Amor</titulo>
+            <autor>Pablo Neruda</autor>
+            <categoria>Poesia</categoria>
+        </libro>
+        <libro>
+            <ISBN>1004</ISBN>
+            <titulo>Clean Code</titulo>
+            <autor>Robert C. Martin</autor>
+            <categoria>Programacion</categoria>
+        </libro>
+        <libro>
+            <ISBN>1005</ISBN>
+            <titulo>Redes de Computadoras</titulo>
+            <autor>Andrew S. Tanenbaum</autor>
+            <categoria>Redes</categoria>
+        </libro>
+    </listaLibros>
+</config>

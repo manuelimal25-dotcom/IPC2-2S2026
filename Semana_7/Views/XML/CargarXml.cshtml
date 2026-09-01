@@ -1,0 +1,31 @@
+@{
+    // Define el titulo de la pestaña del navegador para esta vista
+    ViewData["Title"] = "Cargar XML";
+}
+
+<!-- Hoja de estilos propia de esta vista -->
+<link rel="stylesheet" href="~/css/xml.css" />
+
+<h1>Cargar archivo XML de entrada</h1>
+
+<!-- enctype multipart/form-data es obligatorio cuando el formulario envia un archivo -->
+<form class="form-xml" method="post" action="/XML/CargarXml" enctype="multipart/form-data">
+    <div class="campo-archivo">
+        <!-- El input queda oculto por CSS, el label de abajo lo reemplaza visualmente -->
+        <input type="file" id="archivo" name="archivo" accept=".xml" required />
+        <label for="archivo" id="etiquetaArchivo">Seleccionar archivo XML</label>
+    </div>
+    <button type="submit">Cargar archivo</button>
+</form>
+
+@if (ViewBag.Mensajes != null)
+{
+    <!-- white-space: pre-line respeta los saltos de linea del texto devuelto -->
+    <div class="resultado-lectura">
+        <h2>Resultado de la lectura</h2>
+        <p style="white-space: pre-line;">@ViewBag.Mensajes</p>
+    </div>
+}
+
+<!-- Script propio de esta vista, para mostrar el nombre del archivo elegido -->
+<script src="~/js/xml.js"></script>
