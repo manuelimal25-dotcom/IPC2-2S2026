@@ -1,0 +1,62 @@
+[
+  {
+    "titulo": "Bohemian Rhapsody",
+    "artista": "Queen",
+    "genero": "Rock",
+    "duracion": 6
+  },
+  {
+    "titulo": "Blinding Lights",
+    "artista": "The Weeknd",
+    "genero": "Pop",
+    "duracion": 3
+  },
+  {
+    "titulo": "Take Five",
+    "artista": "Dave Brubeck",
+    "genero": "Jazz",
+    "duracion": 5
+  },
+  {
+    "titulo": "Clair de Lune",
+    "artista": "Claude Debussy",
+    "genero": "Clásica",
+    "duracion": 5
+  },
+  {
+    "titulo": "Hotel California",
+    "artista": "Eagles",
+    "genero": "Rock",
+    "duracion": 6
+  },
+  {
+    "titulo": "Shape of You",
+    "artista": "Ed Sheeran",
+    "genero": "Pop",
+    "duracion": 4
+  },
+  {
+    "titulo": "Fly Me to the Moon",
+    "artista": "Frank Sinatra",
+    "genero": "Jazz",
+    "duracion": 2
+  },
+  {
+    "titulo": "Für Elise",
+    "artista": "Ludwig van Beethoven",
+    "genero": "Clásica",
+    "duracion": 3
+  },
+  {
+    "titulo": "Stairway to Heaven",
+    "artista": "Led Zeppelin",
+    "genero": "Rock",
+    "duracion": 8
+  },
+  {
+    "titulo": "Levitating",
+    "artista": "Dua Lipa",
+    "genero": "Pop",
+    "duracion": 3
+  }
+]
