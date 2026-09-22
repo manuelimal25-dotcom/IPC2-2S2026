@@ -159,6 +159,27 @@ html, body {
     font-size: 0.95rem;
 }
 
+.form-libro select {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 0.95rem;
+}
+
+.form-libro > label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.form-libro > button {
+    margin-top: 16px;
+}
+
 .form-libro input:focus-visible,
 .form-xml input[type="file"]:focus-visible + label {
     outline: 2px solid var(--navy);
@@ -210,6 +231,74 @@ html, body {
     color: var(--muted);
     cursor: pointer;
     text-align: center;
+}
+
+.boton-principal {
+    background: var(--spine);
+    color: var(--spine-ink);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+.boton-principal:hover,
+.boton-principal:focus-visible {
+    opacity: 0.9;
+}
+
+.panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px 28px;
+    max-width: 680px;
+}
+
+.panel-narrow {
+    max-width: 480px;
+}
+
+.panel p:first-child {
+    margin-top: 0;
+}
+
+.panel p:last-child {
+    margin-bottom: 0;
+}
+
+.arbol-categorias,
+.arbol-categorias ul {
+    margin: 0;
+    padding-left: 24px;
+}
+
+.arbol-categorias li {
+    padding: 5px 0;
+}
+
+.lista-resultados {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.lista-resultados li {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.lista-resultados li:last-child {
+    border-bottom: none;
+}
+
+.lista-resultados span {
+    color: var(--muted);
+    white-space: nowrap;
 }
 
 @media (max-width: 720px) {

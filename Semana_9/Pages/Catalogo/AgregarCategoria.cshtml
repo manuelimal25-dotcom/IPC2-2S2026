@@ -1,0 +1,26 @@
+@page
+@{
+    ViewData["Title"] = "Agregar categoría";
+}
+
+<h1>Agregar una categoría</h1>
+
+<p id="mensajeCategoria" class="mensaje-confirmacion" hidden></p>
+<form class="form-libro panel-narrow" id="formAgregarCategoria">
+    <label for="nombreCategoria">Nombre de la categoría</label>
+    <input type="text" id="nombreCategoria" required />
+    <button class="boton-principal" type="submit">Agregar categoría</button>
+</form>
+
+@section Scripts {
+    <script>
+        document.getElementById("formAgregarCategoria").addEventListener("submit", function (evento) {
+            evento.preventDefault();
+            const nombre = document.getElementById("nombreCategoria").value;
+            const mensaje = document.getElementById("mensajeCategoria");
+            mensaje.textContent = `La categoría '${nombre}' fue agregada correctamente.`;
+            mensaje.hidden = false;
+            evento.target.reset();
+        });
+    </script>
+}

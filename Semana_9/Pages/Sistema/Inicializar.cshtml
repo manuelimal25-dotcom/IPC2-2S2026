@@ -1,0 +1,21 @@
+@page
+@{
+    ViewData["Title"] = "Inicializar sistema";
+}
+
+<h1>Inicializar el sistema</h1>
+<p>Prepara el catálogo para comenzar a trabajar.</p>
+
+<div class="panel panel-narrow">
+    <p>Esta acción limpia la información cargada en la sesión del cliente.</p>
+    <button class="boton-principal" id="btnInicializar" type="button">Inicializar sistema</button>
+    <p class="mensaje-confirmacion" id="mensajeInicializar" hidden>El sistema fue inicializado correctamente.</p>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("btnInicializar").addEventListener("click", function () {
+            document.getElementById("mensajeInicializar").hidden = false;
+        });
+    </script>
+}

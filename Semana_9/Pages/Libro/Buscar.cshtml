@@ -1,0 +1,26 @@
+@page
+@{
+    ViewData["Title"] = "Buscar libro";
+}
+
+<h1>Buscar libro por ISBN</h1>
+
+<form class="form-libro panel-narrow" id="formBuscar">
+    <label for="isbnBuscar">ISBN</label>
+    <input type="number" id="isbnBuscar" required />
+    <button class="boton-principal" type="submit">Buscar libro</button>
+</form>
+<div class="panel resultado-lectura" id="resultadoBuscar" hidden>
+    <h2>Libro encontrado</h2>
+    <p>El principito</p>
+    <p>Autor: Antoine de Saint-Exupéry</p>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("formBuscar").addEventListener("submit", function (evento) {
+            evento.preventDefault();
+            document.getElementById("resultadoBuscar").hidden = false;
+        });
+    </script>
+}

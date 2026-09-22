@@ -1,0 +1,26 @@
+@page
+@{
+    ViewData["Title"] = "Eliminar libro";
+}
+
+<h1>Eliminar un libro</h1>
+
+<p id="mensajeEliminar" class="mensaje-confirmacion" hidden></p>
+<form class="form-libro panel-narrow" id="formEliminar">
+    <label for="isbnEliminar">ISBN del libro</label>
+    <input type="number" id="isbnEliminar" required />
+    <button class="boton-principal" type="submit">Eliminar libro</button>
+</form>
+
+@section Scripts {
+    <script>
+        document.getElementById("formEliminar").addEventListener("submit", function (evento) {
+            evento.preventDefault();
+            const isbn = document.getElementById("isbnEliminar").value;
+            const mensaje = document.getElementById("mensajeEliminar");
+            mensaje.textContent = `El libro con ISBN ${isbn} fue eliminado de la sesión.`;
+            mensaje.hidden = false;
+            evento.target.reset();
+        });
+    </script>
+}

@@ -17,7 +17,7 @@
             <section class="sidebar-group">
                 <h2>Sistema</h2>
                 <ul>
-                    <li><a href="#">Inicializar el Sistema</a></li>
+                    <li><a asp-page="/Sistema/Inicializar">Inicializar el Sistema</a></li>
                     <li><a asp-page="/XML/CargarXml">Cargar Archivo XML de Entrada</a></li>
                 </ul>
             </section>
@@ -25,9 +25,9 @@
             <section class="sidebar-group">
                 <h2>Catálogo</h2>
                 <ul>
-                    <li><a href="#">Mostrar Estructura de Categorías</a></li>
-                    <li><a href="#">Mostrar Libros de una Categoría (Graphviz)</a></li>
-                    <li><a href="#">Agregar una Categoría</a></li>
+                    <li><a asp-page="/Catalogo/Estructura">Mostrar Estructura de Categorías</a></li>
+                    <li><a asp-page="/Catalogo/LibrosCategoria">Mostrar Libros de una Categoría (Graphviz)</a></li>
+                    <li><a asp-page="/Catalogo/AgregarCategoria">Agregar una Categoría</a></li>
                 </ul>
             </section>
 
@@ -35,17 +35,17 @@
                 <h2>Libros</h2>
                 <ul>
                     <li><a asp-page="/Libro/Registrar">Registrar un nuevo libro</a></li>
-                    <li><a href="#">Eliminar un Libro</a></li>
-                    <li><a href="#">Libro con ISBN Menor</a></li>
-                    <li><a href="#">Libro con ISBN Mayor</a></li>
-                    <li><a href="#">Buscar Libro por ISBN</a></li>
+                    <li><a asp-page="/Libro/Eliminar">Eliminar un Libro</a></li>
+                    <li><a asp-page="/Libro/ISBNMenor">Libro con ISBN Menor</a></li>
+                    <li><a asp-page="/Libro/ISBNMayor">Libro con ISBN Mayor</a></li>
+                    <li><a asp-page="/Libro/Buscar">Buscar Libro por ISBN</a></li>
                 </ul>
             </section>
 
             <section class="sidebar-group">
                 <h2>Ayuda</h2>
                 <ul>
-                    <li><a href="#">Acerca del Proyecto</a></li>
+                    <li><a asp-page="/Ayuda/Acerca">Acerca del Proyecto</a></li>
                 </ul>
             </section>
         </aside>
