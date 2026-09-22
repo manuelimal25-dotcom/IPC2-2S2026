@@ -1,0 +1,23 @@
+@page
+@{
+    ViewData["Title"] = "Cargar XML";
+}
+
+<h1>Cargar archivo XML de entrada</h1>
+
+<form id="formXml" class="form-xml">
+    <div class="campo-archivo">
+        <input type="file" id="archivo" name="archivo" accept=".xml,text/xml" required />
+        <label for="archivo" id="etiquetaArchivo">Seleccionar archivo XML</label>
+    </div>
+    <button type="submit">Cargar archivo</button>
+</form>
+
+<div id="resultadoXml" class="resultado-lectura" hidden>
+    <h2>Archivo seleccionado</h2>
+    <p id="detalleXml"></p>
+</div>
+
+@section Scripts {
+    <script src="~/js/xml.js" asp-append-version="true"></script>
+}

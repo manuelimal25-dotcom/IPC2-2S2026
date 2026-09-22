@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Catálogo de Libros</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="topbar">
+        <span class="topbar-title">Catálogo de Libros</span>
+        <a class="topbar-back" asp-page="/Index">Volver al Inicio</a>
+    </header>
+
+    <div class="app-shell">
+        <aside class="sidebar">
+            <section class="sidebar-group">
+                <h2>Sistema</h2>
+                <ul>
+                    <li><a href="#">Inicializar el Sistema</a></li>
+                    <li><a asp-page="/XML/CargarXml">Cargar Archivo XML de Entrada</a></li>
+                </ul>
+            </section>
+
+            <section class="sidebar-group">
+                <h2>Catálogo</h2>
+                <ul>
+                    <li><a href="#">Mostrar Estructura de Categorías</a></li>
+                    <li><a href="#">Mostrar Libros de una Categoría (Graphviz)</a></li>
+                    <li><a href="#">Agregar una Categoría</a></li>
+                </ul>
+            </section>
+
+            <section class="sidebar-group">
+                <h2>Libros</h2>
+                <ul>
+                    <li><a asp-page="/Libro/Registrar">Registrar un nuevo libro</a></li>
+                    <li><a href="#">Eliminar un Libro</a></li>
+                    <li><a href="#">Libro con ISBN Menor</a></li>
+                    <li><a href="#">Libro con ISBN Mayor</a></li>
+                    <li><a href="#">Buscar Libro por ISBN</a></li>
+                </ul>
+            </section>
+
+            <section class="sidebar-group">
+                <h2>Ayuda</h2>
+                <ul>
+                    <li><a href="#">Acerca del Proyecto</a></li>
+                </ul>
+            </section>
+        </aside>
+
+        <main class="content">
+            @RenderBody()
+        </main>
+    </div>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
