@@ -5,8 +5,5 @@ namespace Frontend_Servi2.Pages;
 
 public class IndexModel : PageModel
 {
-    public void OnGet()
-    {
-
-    }
+    public IActionResult OnGet() => RedirectToPage("/Contribuyentes");
 }

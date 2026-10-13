@@ -1,0 +1,49 @@
+@page
+@model Frontend_Servi2.Pages.ContribuyentesModel
+@{
+    ViewData["Title"] = "Contribuyentes";
+    var claseCodigo = Model.UltimaRespuesta.Codigo == 0 ? "codigo-neutro" : Model.UltimaRespuesta.Exito ? "codigo" : "codigo-error";
+}
+
+<div class="rejilla">
+    <section class="tarjeta tarjeta-ancha">
+        <div class="tarjeta-cabecera"><div><span class="etiqueta">GET /api/contribuyentes</span><h2>Registro de contribuyentes</h2></div><span class="etiqueta">@Model.Contribuyentes.Count registros</span></div>
+        <div class="tabla-contenedor">
+            <table>
+                <thead><tr><th>NIT</th><th>Nombre</th><th>Acciones</th></tr></thead>
+                <tbody>
+                @if (Model.Contribuyentes.Count == 0)
+                {
+                    <tr><td colspan="3">No hay contribuyentes registrados.</td></tr>
+                }
+                @foreach (var contribuyente in Model.Contribuyentes)
+                {
+                    <tr>
+                        <td><strong>@contribuyente.Nit</strong></td><td>@contribuyente.Nombre</td>
+                        <td><div class="acciones-fila">
+                            <form method="post" asp-page-handler="Editar"><input type="hidden" name="nit" value="@contribuyente.Nit" /><input type="hidden" name="nombre" value="@contribuyente.Nombre" /><button class="boton boton-put boton-pequeno" type="submit">Editar PUT</button></form>
+                            <form method="post" asp-page-handler="PrepararParche"><input type="hidden" name="nit" value="@contribuyente.Nit" /><input type="hidden" name="nombre" value="@contribuyente.Nombre" /><button class="boton boton-patch boton-pequeno" type="submit">Parchar</button></form>
+                            <form method="post" asp-page-handler="Eliminar"><input type="hidden" name="NitEliminar" value="@contribuyente.Nit" /><button class="boton boton-delete boton-pequeno" type="submit">Eliminar</button></form>
+                        </div></td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <section class="tarjeta respuesta">
+        <div class="tarjeta-cabecera"><div><span class="etiqueta">Monitor HTTP</span><h2>Última respuesta de la API</h2></div></div>
+        <dl class="respuesta-detalle"><div><dt>Verbo</dt><dd>@Model.VerboUltimaRespuesta</dd></div><div><dt>URL</dt><dd>@Model.UrlUltimaRespuesta</dd></div><div><dt>Código</dt><dd><span class="@claseCodigo">@(Model.UltimaRespuesta.Codigo == 0 ? "Sin llamada" : Model.UltimaRespuesta.Codigo)</span></dd></div></dl>
+        <pre class="cuerpo-api">@(string.IsNullOrWhiteSpace(Model.UltimaRespuesta.Cuerpo) ? "La respuesta aparecerá aquí." : Model.UltimaRespuesta.Cuerpo)</pre>
+    </section>
+</div>
+
+<div class="rejilla-formularios">
+    <section class="tarjeta"><span class="etiqueta">POST</span><h2>Crear contribuyente</h2><form method="post" asp-page-handler="Crear" class="formulario"><div class="campo"><label asp-for="NitCrear">NIT</label><input asp-for="NitCrear" /></div><div class="campo"><label asp-for="NombreCrear">Nombre</label><input asp-for="NombreCrear" /></div><button class="boton boton-post" type="submit">Crear</button></form></section>
+    <section class="tarjeta"><span class="etiqueta">GET</span><h2>Obtener por NIT</h2><form method="post" asp-page-handler="Obtener" class="formulario"><div class="campo"><label asp-for="NitConsulta">NIT</label><input asp-for="NitConsulta" /></div><button class="boton boton-get" type="submit">Consultar</button></form></section>
+    <section class="tarjeta"><span class="etiqueta">PUT</span><h2>Reemplazar completo</h2><form method="post" asp-page-handler="Reemplazar" class="formulario"><div class="campo"><label asp-for="NitReemplazar">NIT</label><input asp-for="NitReemplazar" /></div><div class="campo"><label asp-for="NombreReemplazar">Nombre</label><input asp-for="NombreReemplazar" /></div><button class="boton boton-put" type="submit">Reemplazar</button></form></section>
+    <section class="tarjeta"><span class="etiqueta">PATCH</span><h2>Actualizar nombre</h2><form method="post" asp-page-handler="ActualizarNombre" class="formulario"><div class="campo"><label asp-for="NitParche">NIT</label><input asp-for="NitParche" /></div><div class="campo"><label asp-for="NombreParche">Nuevo nombre</label><input asp-for="NombreParche" /></div><button class="boton boton-patch" type="submit">Actualizar nombre</button></form></section>
+    <section class="tarjeta"><span class="etiqueta">DELETE</span><h2>Eliminar por NIT</h2><form method="post" asp-page-handler="Eliminar" class="formulario"><div class="campo"><label asp-for="NitEliminar">NIT</label><input asp-for="NitEliminar" /></div><button class="boton boton-delete" type="submit">Eliminar</button></form></section>
+    <section class="tarjeta"><span class="etiqueta">Regex / GET</span><h2>Extraer fecha</h2><form method="post" asp-page-handler="ExtraerFecha" class="formulario"><div class="campo"><label asp-for="TextoFecha">Texto</label><input asp-for="TextoFecha" placeholder="Guatemala, 15/01/2025 15:25 hrs." /></div><button class="boton boton-get" type="submit">Extraer fecha</button></form></section>
+    <section class="tarjeta tarjeta-ancha"><span class="etiqueta">Regex / POST</span><h2>Importar desde texto</h2><p class="subtitulo">Escribe registros con el formato NIT: 73781061 Nombre: Empresa ABC, S.A.</p><form method="post" asp-page-handler="ImportarTexto" class="formulario"><div class="campo"><label asp-for="TextoImportacion">Texto libre</label><textarea asp-for="TextoImportacion"></textarea></div><button class="boton boton-post" type="submit">Importar texto</button></form></section>
+</div>

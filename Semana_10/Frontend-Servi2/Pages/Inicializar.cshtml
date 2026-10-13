@@ -1,0 +1,18 @@
+@page
+@model Frontend_Servi2.Pages.InicializarModel
+@{
+    ViewData["Title"] = "Inicializar datos";
+}
+
+<section class="tarjeta solo-contenido">
+    <span class="etiqueta">DELETE /api/contribuyentes/inicializar</span>
+    <h2>Limpiar datos del ejemplo</h2>
+    <p class="texto-suave">Esta acción elimina todos los contribuyentes guardados en el backend y deja la lista vacía para comenzar otra práctica.</p>
+    <form method="post"><button class="boton boton-delete" type="submit" onclick="return confirm('¿Deseas eliminar todos los datos?');">Inicializar datos</button></form>
+    @if (Model.Respuesta.Codigo != 0)
+    {
+        <hr class="separador" />
+        <dl class="respuesta-detalle"><div><dt>Verbo</dt><dd>@Model.Verbo</dd></div><div><dt>URL</dt><dd>@Model.UrlLlamada</dd></div><div><dt>Código</dt><dd><span class="@(Model.Respuesta.Exito ? "codigo" : "codigo-error")">@Model.Respuesta.Codigo</span></dd></div></dl>
+        <pre class="cuerpo-api">@Model.Respuesta.Cuerpo</pre>
+    }
+</section>

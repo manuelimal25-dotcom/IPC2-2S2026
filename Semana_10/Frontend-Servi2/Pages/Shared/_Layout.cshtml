@@ -1,52 +1,38 @@
-﻿<!DOCTYPE html>
-<html lang="en">
+﻿@{
+    var paginaActual = ViewContext.RouteData.Values["page"]?.ToString() ?? string.Empty;
+    string ClaseActivo(string pagina) => paginaActual.Equals(pagina, StringComparison.OrdinalIgnoreCase) ? "activo" : string.Empty;
+}
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Frontend_Servi2</title>
-    <script type="importmap"></script>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <title>@ViewData["Title"] - Servicio SAT</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Frontend_Servi2.styles.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Frontend_Servi2</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+    <aside class="barra-lateral">
+        <div class="marca"><span class="marca-simbolo">SAT</span><div><strong>Servicio SAT</strong><small>Ejemplo académico</small></div></div>
+        <nav class="navegacion" aria-label="Navegación principal">
+            <a class="enlace-nav @ClaseActivo("/EnviarMensaje")" asp-page="/EnviarMensaje"><span>✉</span>Enviar mensaje</a>
+            <a class="enlace-nav @ClaseActivo("/Contribuyentes")" asp-page="/Contribuyentes"><span>◉</span>Contribuyentes <em>Ejemplo</em></a>
+            <div class="grupo-nav"><span class="titulo-grupo">Peticiones</span>
+                <a class="enlace-nav subenlace @ClaseActivo("/Peticiones/ConsultarContribuyente")" asp-page="/Peticiones/ConsultarContribuyente">Consultar contribuyente</a>
+                <a class="enlace-nav subenlace @ClaseActivo("/Peticiones/ResumenIva")" asp-page="/Peticiones/ResumenIva">Resumen de IVA por fecha y NIT</a>
+                <a class="enlace-nav subenlace @ClaseActivo("/Peticiones/ResumenRango")" asp-page="/Peticiones/ResumenRango">Resumen por rango de fechas</a>
+                <a class="enlace-nav subenlace @ClaseActivo("/Peticiones/Grafica")" asp-page="/Peticiones/Grafica">Gráfica</a>
+                <a class="enlace-nav subenlace @ClaseActivo("/Peticiones/ReportePdf")" asp-page="/Peticiones/ReportePdf">Reporte en PDF</a>
             </div>
+            <div class="grupo-nav"><span class="titulo-grupo">Ayuda</span>
+                <a class="enlace-nav subenlace @ClaseActivo("/Ayuda/Estudiante")" asp-page="/Ayuda/Estudiante">Información del estudiante</a>
+                <a class="enlace-nav subenlace @ClaseActivo("/Ayuda/Documentacion")" asp-page="/Ayuda/Documentacion">Documentación</a>
+            </div>
+            <a class="enlace-nav enlace-inicializar @ClaseActivo("/Inicializar")" asp-page="/Inicializar"><span>↺</span>Inicializar</a>
         </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - Frontend_Servi2 - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
-    @await RenderSectionAsync("Scripts", required: false)
+    </aside>
+    <main class="contenido-principal">
+        <header class="encabezado-pagina"><span class="ruta">Servicio SAT / Ejemplo</span><h1>@ViewData["Title"]</h1></header>
+        @RenderBody()
+    </main>
 </body>
 </html>
