@@ -1,23 +1,15 @@
+using Backend_Servi1.Services;
+
+const string politicaCors = "PoliticaCors";
+
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
+builder.WebHost.UseUrls("http://localhost:5100");
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
-builder.Services.AddOpenApi();
+builder.Services.AddSingleton<ContribuyenteService>();
+builder.Services.AddCors(opciones => opciones.AddPolicy(politicaCors, politica =>
+    politica.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()));
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
+app.UseCors(politicaCors);
 app.MapControllers();
-
 app.Run();
