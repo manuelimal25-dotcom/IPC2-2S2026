@@ -1,3 +1,5 @@
+using System.Globalization;
+using System.Text.Json;
 using Frontend_Servi2.Models;
 using Frontend_Servi2.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +16,14 @@ public class ExtraerFechaModel(ApiClient apiClient) : PageModel
     public async Task OnPostAsync()
     {
         Respuesta = await apiClient.ExtraerFechaAsync(Texto);
-        Fecha = Respuesta.Exito ? Respuesta.Cuerpo.Trim('"') : string.Empty;
+        Fecha = Respuesta.Exito ? FormatearFecha(Respuesta.Cuerpo) : string.Empty;
+        if (!string.IsNullOrWhiteSpace(Fecha))
+            Respuesta.Mensaje = $"Fecha extraída: {Fecha}";
+    }
+
+    private static string FormatearFecha(string cuerpo)
+    {
+        var fecha = JsonSerializer.Deserialize<DateTime>(cuerpo);
+        return fecha.ToString("dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture);
     }
 }

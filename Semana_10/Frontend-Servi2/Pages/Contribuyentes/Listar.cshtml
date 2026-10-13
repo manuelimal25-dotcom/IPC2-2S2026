@@ -4,7 +4,10 @@
     ViewData["Title"] = "Listar contribuyentes";
 }
 
-<p class="ruta-api">GET /api/contribuyentes</p>
+@if (!Model.Respuesta.Exito)
+{
+    <partial name="_Alerta" model="Model.Respuesta" />
+}
 
 <table>
     <thead>
@@ -30,4 +33,3 @@
     </tbody>
 </table>
 
-<partial name="_Respuesta" model="Model.Respuesta" />

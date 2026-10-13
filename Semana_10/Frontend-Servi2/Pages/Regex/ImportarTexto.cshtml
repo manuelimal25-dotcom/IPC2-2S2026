@@ -4,7 +4,7 @@
     ViewData["Title"] = "Importar texto";
 }
 
-<p class="ruta-api">POST /api/contribuyentes/importar-texto</p>
+<partial name="_Alerta" model="Model.Respuesta" />
 <form method="post" class="formulario">
     <div class="campo"><label asp-for="Texto">Texto libre</label><textarea asp-for="Texto" placeholder="NIT: 73781061 Nombre: Empresa ABC, S.A."></textarea></div>
     <button class="boton" type="submit">Importar texto</button>
@@ -13,4 +13,3 @@
 {
     <dl class="resumen-importacion"><div><dt>Creados</dt><dd>@Model.Creados</dd></div><div><dt>NIT inválidos</dt><dd>@(Model.NitsInvalidos.Count == 0 ? "Ninguno" : string.Join(", ", Model.NitsInvalidos))</dd></div></dl>
 }
-<partial name="_Respuesta" model="Model.Respuesta" />

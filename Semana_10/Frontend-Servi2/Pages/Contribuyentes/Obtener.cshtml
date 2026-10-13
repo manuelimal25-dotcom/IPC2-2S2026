@@ -4,7 +4,7 @@
     ViewData["Title"] = "Obtener contribuyente";
 }
 
-<p class="ruta-api">GET /api/contribuyentes/{nit}</p>
+<partial name="_Alerta" model="Model.Respuesta" />
 <form method="post" class="formulario">
     <div class="campo"><label asp-for="Nit">NIT</label><input asp-for="Nit" /></div>
     <button class="boton" type="submit">Obtener contribuyente</button>
@@ -17,4 +17,3 @@
         <tbody><tr><td>@Model.Contribuyente.Nit</td><td>@Model.Contribuyente.Nombre</td></tr></tbody>
     </table>
 }
-<partial name="_Respuesta" model="Model.Respuesta" />

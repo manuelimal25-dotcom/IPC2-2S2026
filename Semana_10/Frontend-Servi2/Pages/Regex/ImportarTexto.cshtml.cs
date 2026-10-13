@@ -8,6 +8,10 @@ namespace Frontend_Servi2.Pages.Regex;
 
 public class ImportarTextoModel(ApiClient apiClient) : PageModel
 {
+    private static readonly JsonSerializerOptions OpcionesJson = new()
+    {
+        PropertyNameCaseInsensitive = true
+    };
     [BindProperty] public string Texto { get; set; } = string.Empty;
     public int Creados { get; private set; }
     public List<string> NitsInvalidos { get; private set; } = [];
@@ -22,9 +26,8 @@ public class ImportarTextoModel(ApiClient apiClient) : PageModel
 
     private void LeerResultado(string cuerpo)
     {
-        using var documento = JsonDocument.Parse(cuerpo);
-        Creados = documento.RootElement.GetProperty("creados").GetInt32();
-        NitsInvalidos = documento.RootElement.GetProperty("nitsInvalidos")
-            .EnumerateArray().Select(elemento => elemento.GetString() ?? string.Empty).ToList();
+        var resultado = JsonSerializer.Deserialize<ResultadoImportacion>(cuerpo, OpcionesJson);
+        Creados = resultado?.Creados ?? 0;
+        NitsInvalidos = resultado?.NitsInvalidos ?? [];
     }
 }

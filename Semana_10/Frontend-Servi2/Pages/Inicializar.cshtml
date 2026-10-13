@@ -4,9 +4,8 @@
     ViewData["Title"] = "Inicializar datos";
 }
 
-<p class="ruta-api">DELETE /api/contribuyentes/inicializar</p>
+<partial name="_Alerta" model="Model.Respuesta" />
 <p class="aviso">Esta operación borrará todos los datos de contribuyentes guardados en el backend.</p>
 <form method="post" class="formulario">
     <button class="boton" type="submit">Inicializar datos</button>
 </form>
-<partial name="_Respuesta" model="Model.Respuesta" />

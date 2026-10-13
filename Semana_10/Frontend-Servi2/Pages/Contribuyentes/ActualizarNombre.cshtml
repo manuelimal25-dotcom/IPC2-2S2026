@@ -4,10 +4,9 @@
     ViewData["Title"] = "Actualizar nombre";
 }
 
-<p class="ruta-api">PATCH /api/contribuyentes/{nit}</p>
+<partial name="_Alerta" model="Model.Respuesta" />
 <form method="post" class="formulario">
     <div class="campo"><label asp-for="Nit">NIT</label><input asp-for="Nit" /></div>
     <div class="campo"><label asp-for="Nombre">Nombre nuevo</label><input asp-for="Nombre" /></div>
     <button class="boton" type="submit">Actualizar nombre</button>
 </form>
-<partial name="_Respuesta" model="Model.Respuesta" />

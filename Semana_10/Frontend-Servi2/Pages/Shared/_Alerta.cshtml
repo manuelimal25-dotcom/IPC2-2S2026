@@ -1,0 +1,6 @@
+@model Frontend_Servi2.Models.RespuestaApi
+
+@if (!string.IsNullOrWhiteSpace(Model.Mensaje))
+{
+    <div class="alerta @(Model.Exito ? "alerta-exito" : "alerta-error")" role="alert">@Model.Mensaje</div>
+}

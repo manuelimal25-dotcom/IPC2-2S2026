@@ -4,9 +4,8 @@
     ViewData["Title"] = "Eliminar contribuyente";
 }
 
-<p class="ruta-api">DELETE /api/contribuyentes/{nit}</p>
+<partial name="_Alerta" model="Model.Respuesta" />
 <form method="post" class="formulario">
     <div class="campo"><label asp-for="Nit">NIT</label><input asp-for="Nit" /></div>
     <button class="boton" type="submit">Eliminar contribuyente</button>
 </form>
-<partial name="_Respuesta" model="Model.Respuesta" />
