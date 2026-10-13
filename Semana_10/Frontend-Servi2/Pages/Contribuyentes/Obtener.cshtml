@@ -1,0 +1,20 @@
+@page
+@model Frontend_Servi2.Pages.Contribuyentes.ObtenerModel
+@{
+    ViewData["Title"] = "Obtener contribuyente";
+}
+
+<p class="ruta-api">GET /api/contribuyentes/{nit}</p>
+<form method="post" class="formulario">
+    <div class="campo"><label asp-for="Nit">NIT</label><input asp-for="Nit" /></div>
+    <button class="boton" type="submit">Obtener contribuyente</button>
+</form>
+
+@if (Model.Contribuyente is not null)
+{
+    <table>
+        <thead><tr><th>NIT</th><th>Nombre</th></tr></thead>
+        <tbody><tr><td>@Model.Contribuyente.Nit</td><td>@Model.Contribuyente.Nombre</td></tr></tbody>
+    </table>
+}
+<partial name="_Respuesta" model="Model.Respuesta" />

@@ -1,0 +1,13 @@
+@page
+@model Frontend_Servi2.Pages.Contribuyentes.ReemplazarModel
+@{
+    ViewData["Title"] = "Reemplazar contribuyente";
+}
+
+<p class="ruta-api">PUT /api/contribuyentes/{nit}</p>
+<form method="post" class="formulario">
+    <div class="campo"><label asp-for="Nit">NIT</label><input asp-for="Nit" /></div>
+    <div class="campo"><label asp-for="Nombre">Nombre</label><input asp-for="Nombre" /></div>
+    <button class="boton" type="submit">Reemplazar contribuyente</button>
+</form>
+<partial name="_Respuesta" model="Model.Respuesta" />

@@ -1,38 +1,35 @@
 ﻿@{
     var paginaActual = ViewContext.RouteData.Values["page"]?.ToString() ?? string.Empty;
-    string ClaseActivo(string pagina) => paginaActual.Equals(pagina, StringComparison.OrdinalIgnoreCase) ? "activo" : string.Empty;
+    string ClaseActiva(string pagina) => paginaActual.Equals(pagina, StringComparison.OrdinalIgnoreCase) ? "activa" : string.Empty;
 }
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Servicio SAT</title>
+    <title>@ViewData["Title"] - Contribuyentes - RTU</title>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
-    <aside class="barra-lateral">
-        <div class="marca"><span class="marca-simbolo">SAT</span><div><strong>Servicio SAT</strong><small>Ejemplo académico</small></div></div>
-        <nav class="navegacion" aria-label="Navegación principal">
-            <a class="enlace-nav @ClaseActivo("/EnviarMensaje")" asp-page="/EnviarMensaje"><span>✉</span>Enviar mensaje</a>
-            <a class="enlace-nav @ClaseActivo("/Contribuyentes")" asp-page="/Contribuyentes"><span>◉</span>Contribuyentes <em>Ejemplo</em></a>
-            <div class="grupo-nav"><span class="titulo-grupo">Peticiones</span>
-                <a class="enlace-nav subenlace @ClaseActivo("/Peticiones/ConsultarContribuyente")" asp-page="/Peticiones/ConsultarContribuyente">Consultar contribuyente</a>
-                <a class="enlace-nav subenlace @ClaseActivo("/Peticiones/ResumenIva")" asp-page="/Peticiones/ResumenIva">Resumen de IVA por fecha y NIT</a>
-                <a class="enlace-nav subenlace @ClaseActivo("/Peticiones/ResumenRango")" asp-page="/Peticiones/ResumenRango">Resumen por rango de fechas</a>
-                <a class="enlace-nav subenlace @ClaseActivo("/Peticiones/Grafica")" asp-page="/Peticiones/Grafica">Gráfica</a>
-                <a class="enlace-nav subenlace @ClaseActivo("/Peticiones/ReportePdf")" asp-page="/Peticiones/ReportePdf">Reporte en PDF</a>
-            </div>
-            <div class="grupo-nav"><span class="titulo-grupo">Ayuda</span>
-                <a class="enlace-nav subenlace @ClaseActivo("/Ayuda/Estudiante")" asp-page="/Ayuda/Estudiante">Información del estudiante</a>
-                <a class="enlace-nav subenlace @ClaseActivo("/Ayuda/Documentacion")" asp-page="/Ayuda/Documentacion">Documentación</a>
-            </div>
-            <a class="enlace-nav enlace-inicializar @ClaseActivo("/Inicializar")" asp-page="/Inicializar"><span>↺</span>Inicializar</a>
-        </nav>
-    </aside>
-    <main class="contenido-principal">
-        <header class="encabezado-pagina"><span class="ruta">Servicio SAT / Ejemplo</span><h1>@ViewData["Title"]</h1></header>
-        @RenderBody()
-    </main>
+    <div class="contenedor">
+        <header class="cabecera">
+            <a class="titulo-sitio" asp-page="/Contribuyentes/Listar">Contribuyentes - RTU</a>
+            <nav class="pestanas" aria-label="Operaciones de contribuyentes">
+                <a class="@ClaseActiva("/Contribuyentes/Listar")" asp-page="/Contribuyentes/Listar">Listar</a>
+                <a class="@ClaseActiva("/Contribuyentes/Obtener")" asp-page="/Contribuyentes/Obtener">Obtener</a>
+                <a class="@ClaseActiva("/Contribuyentes/Crear")" asp-page="/Contribuyentes/Crear">Crear</a>
+                <a class="@ClaseActiva("/Contribuyentes/Reemplazar")" asp-page="/Contribuyentes/Reemplazar">Reemplazar</a>
+                <a class="@ClaseActiva("/Contribuyentes/ActualizarNombre")" asp-page="/Contribuyentes/ActualizarNombre">Actualizar nombre</a>
+                <a class="@ClaseActiva("/Contribuyentes/Eliminar")" asp-page="/Contribuyentes/Eliminar">Eliminar</a>
+                <a class="@ClaseActiva("/Regex/ExtraerFecha")" asp-page="/Regex/ExtraerFecha">Extraer fecha</a>
+                <a class="@ClaseActiva("/Regex/ImportarTexto")" asp-page="/Regex/ImportarTexto">Importar texto</a>
+                <a class="@ClaseActiva("/Inicializar")" asp-page="/Inicializar">Inicializar</a>
+            </nav>
+        </header>
+        <main class="contenido">
+            <h1>@ViewData["Title"]</h1>
+            @RenderBody()
+        </main>
+    </div>
 </body>
 </html>

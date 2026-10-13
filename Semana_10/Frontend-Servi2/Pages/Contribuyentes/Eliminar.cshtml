@@ -1,0 +1,12 @@
+@page
+@model Frontend_Servi2.Pages.Contribuyentes.EliminarModel
+@{
+    ViewData["Title"] = "Eliminar contribuyente";
+}
+
+<p class="ruta-api">DELETE /api/contribuyentes/{nit}</p>
+<form method="post" class="formulario">
+    <div class="campo"><label asp-for="Nit">NIT</label><input asp-for="Nit" /></div>
+    <button class="boton" type="submit">Eliminar contribuyente</button>
+</form>
+<partial name="_Respuesta" model="Model.Respuesta" />

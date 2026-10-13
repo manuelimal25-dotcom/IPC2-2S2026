@@ -1,0 +1,10 @@
+@model Frontend_Servi2.Models.RespuestaApi
+
+@if (Model.Codigo != 0 || !string.IsNullOrWhiteSpace(Model.Cuerpo))
+{
+    <section class="respuesta">
+        <h2>Respuesta de la API</h2>
+        <p class="codigo-respuesta">Código de estado: <strong>@Model.Codigo</strong></p>
+        <pre>@Model.Cuerpo</pre>
+    </section>
+}
