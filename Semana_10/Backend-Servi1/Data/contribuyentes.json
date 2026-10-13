@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "Nit": "6K",
+    "Nombre": "Empresa con K"
+  },
+  {
+    "Nit": "19",
+    "Nombre": "NIT corto"
+  }
+]

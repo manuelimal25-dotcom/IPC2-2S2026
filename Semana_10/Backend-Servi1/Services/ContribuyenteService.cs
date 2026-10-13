@@ -7,6 +7,12 @@ namespace Backend_Servi1.Services;
 // Administra contribuyentes en memoria y los persiste en un archivo JSON.
 public class ContribuyenteService
 {
+    public const string MensajeCuerpoObligatorio = "El cuerpo de la petición es obligatorio.";
+    public const string MensajeNitObligatorio = "El NIT es obligatorio.";
+    public const string MensajeNitInvalido = "El NIT no es válido.";
+    public const string MensajeNombreObligatorio = "El nombre es obligatorio.";
+    public const string MensajeYaExiste = "El contribuyente ya existe.";
+    public const string MensajeNoExiste = "El contribuyente no existe.";
     private const string CarpetaDatos = "Data";
     private const string ArchivoDatos = "contribuyentes.json";
     private readonly List<Contribuyente> contribuyentes = [];
@@ -25,12 +31,17 @@ public class ContribuyenteService
     public ResultadoOperacion Crear(Contribuyente? contribuyente)
     {
         if (contribuyente is null)
-            return Fallo("El cuerpo es obligatorio.");
+            return Fallo(MensajeCuerpoObligatorio);
+        if (string.IsNullOrWhiteSpace(contribuyente.Nit))
+            return Fallo(MensajeNitObligatorio);
         contribuyente.Nit = Normalizar(contribuyente.Nit);
         if (!NitValidator.EsValido(contribuyente.Nit))
-            return Fallo("El NIT no es válido.");
+            return Fallo(MensajeNitInvalido);
+        if (string.IsNullOrWhiteSpace(contribuyente.Nombre))
+            return Fallo(MensajeNombreObligatorio);
+        contribuyente.Nombre = contribuyente.Nombre.Trim();
         if (Obtener(contribuyente.Nit) is not null)
-            return Fallo("El contribuyente ya existe.");
+            return Fallo(MensajeYaExiste);
         contribuyentes.Add(contribuyente);
         GuardarDatos();
         return Exito("Contribuyente creado.", contribuyente);
@@ -39,30 +50,34 @@ public class ContribuyenteService
     public ResultadoOperacion Reemplazar(string nit, Contribuyente? contribuyente)
     {
         if (contribuyente is null)
-            return Fallo("El cuerpo es obligatorio.");
+            return Fallo(MensajeCuerpoObligatorio);
         var nitNormalizado = Normalizar(nit);
-        if (!NitValidator.EsValido(nitNormalizado))
-            return Fallo("El NIT no es válido.");
+        if (string.IsNullOrWhiteSpace(contribuyente.Nombre))
+            return Fallo(MensajeNombreObligatorio);
         var existente = Obtener(nitNormalizado);
         if (existente is null)
-            return Fallo("El contribuyente no existe.");
+            return Fallo(MensajeNoExiste);
+        if (!NitValidator.EsValido(nitNormalizado))
+            return Fallo(MensajeNitInvalido);
         existente.Nit = nitNormalizado;
-        existente.Nombre = contribuyente.Nombre?.Trim() ?? string.Empty;
+        existente.Nombre = contribuyente.Nombre.Trim();
         GuardarDatos();
         return Exito("Contribuyente reemplazado.", existente);
     }
 
-    public ResultadoOperacion ActualizarNombre(string nit, string? nombre)
+    public ResultadoOperacion ActualizarNombre(string nit, Contribuyente? contribuyente)
     {
+        if (contribuyente is null)
+            return Fallo(MensajeCuerpoObligatorio);
+        if (string.IsNullOrWhiteSpace(contribuyente.Nombre))
+            return Fallo(MensajeNombreObligatorio);
         var nitNormalizado = Normalizar(nit);
-        if (!NitValidator.EsValido(nitNormalizado))
-            return Fallo("El NIT no es válido.");
         var existente = Obtener(nitNormalizado);
         if (existente is null)
-            return Fallo("El contribuyente no existe.");
-        if (string.IsNullOrWhiteSpace(nombre))
-            return Fallo("El nombre es obligatorio.");
-        existente.Nombre = nombre.Trim();
+            return Fallo(MensajeNoExiste);
+        if (!NitValidator.EsValido(nitNormalizado))
+            return Fallo(MensajeNitInvalido);
+        existente.Nombre = contribuyente.Nombre.Trim();
         GuardarDatos();
         return Exito("Nombre actualizado.", existente);
     }
@@ -70,11 +85,11 @@ public class ContribuyenteService
     public ResultadoOperacion Eliminar(string nit)
     {
         var nitNormalizado = Normalizar(nit);
-        if (!NitValidator.EsValido(nitNormalizado))
-            return Fallo("El NIT no es válido.");
         var existente = Obtener(nitNormalizado);
         if (existente is null)
-            return Fallo("El contribuyente no existe.");
+            return Fallo(MensajeNoExiste);
+        if (!NitValidator.EsValido(nitNormalizado))
+            return Fallo(MensajeNitInvalido);
         contribuyentes.Remove(existente);
         GuardarDatos();
         return Exito("Contribuyente eliminado.", existente);

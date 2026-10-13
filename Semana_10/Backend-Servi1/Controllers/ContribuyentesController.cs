@@ -15,7 +15,9 @@ public class ContribuyentesController(ContribuyenteService servicio) : Controlle
         var resultado = servicio.Crear(contribuyente);
         if (resultado.Exito)
             return CreatedAtAction(nameof(Obtener), new { nit = resultado.Contribuyente!.Nit }, resultado.Contribuyente);
-        return resultado.Mensaje.Contains("ya existe") ? Conflict(resultado) : BadRequest(resultado);
+        return resultado.Mensaje == ContribuyenteService.MensajeYaExiste
+            ? Conflict(resultado)
+            : BadRequest(resultado);
     }
 
     [HttpGet]
@@ -32,7 +34,9 @@ public class ContribuyentesController(ContribuyenteService servicio) : Controlle
     public IActionResult Obtener(string nit)
     {
         var contribuyente = servicio.Obtener(nit);
-        return contribuyente is null ? NotFound() : Ok(contribuyente);
+        if (contribuyente is not null)
+            return Ok(contribuyente);
+        return NotFound(new ResultadoOperacion { Mensaje = ContribuyenteService.MensajeNoExiste });
     }
 
     [HttpPut("{nit}")]
@@ -45,7 +49,7 @@ public class ContribuyentesController(ContribuyenteService servicio) : Controlle
     [HttpPatch("{nit}")]
     public IActionResult ActualizarNombre(string nit, [FromBody] Contribuyente? contribuyente)
     {
-        var resultado = servicio.ActualizarNombre(nit, contribuyente?.Nombre);
+        var resultado = servicio.ActualizarNombre(nit, contribuyente);
         return resultado.Exito ? Ok(resultado.Contribuyente) : ResponderError(resultado);
     }
 
@@ -68,5 +72,7 @@ public class ContribuyentesController(ContribuyenteService servicio) : Controlle
     public IActionResult ImportarTexto([FromBody] string? texto) => Ok(servicio.ImportarDesdeTexto(texto));
 
     private IActionResult ResponderError(ResultadoOperacion resultado) =>
-        resultado.Mensaje.Contains("no existe") ? NotFound(resultado) : BadRequest(resultado);
+        resultado.Mensaje == ContribuyenteService.MensajeNoExiste
+            ? NotFound(resultado)
+            : BadRequest(resultado);
 }
